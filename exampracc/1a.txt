@@ -1,0 +1,12 @@
+concurrency is having multiple threads running simultanously, for example 
+in an elevator system, elevator is a thread, user input on ui keypad is a thread. 
+These 2 threads run in parralellel in this system.
+parralellelism is about 2 computer programs running at simultanously
+concurenncy is multiple threads running in the same computer program.
+
+parralellelism, tasks running simultanously
+concurenncy, managing multiple tasks at once.
+
+
+
+3p

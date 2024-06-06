@@ -1,0 +1,7 @@
+B  x
+A  Description: x is an array of pointers to functions that return int. x
+A  x is an array of array of 8 pointers to pointer to function returning pointer to array of pointer to char. x
+d x is a pointer to an array of pointers to functions returning an int f
+B x is a function returning a pointer to an array of 20 elements of type char.
+
+3
