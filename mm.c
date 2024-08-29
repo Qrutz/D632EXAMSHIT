@@ -51,3 +51,53 @@ int main()
     
     return 0;
 }
+
+#include <stdio.h>
+#include <stdlib.h>
+
+#define COURSESL 6
+#define MAX_MARKS 100
+
+int main()
+{
+    int input1[COURSESL];
+    
+    // Loop to get input for all courses
+    for (int i = 0; i < COURSESL; i++) {
+        // Ask for input 
+        printf("Enter a number for course %d: ", i + 1);
+        scanf("%d", &input1[i]);
+    }
+    
+    // Initialize sum to 0
+    int sum = 0;
+
+    // Calculate the sum
+    for (int i = 0; i < COURSESL; i++) {
+        sum += input1[i]; // Add each element to sum
+    }
+    
+    // Calculate percentage
+    float percentage = (sum / (float)(COURSESL * MAX_MARKS)) * 100;
+    
+    // Print the sum and percentage
+    printf("The sum of the marks is: %d\n", sum);
+    printf("The percentage is: %.2f%%\n", percentage);
+    
+    // Determine grade based on percentage using if-else
+    if (percentage >= 90) {
+        printf("Grade A\n");
+    } else if (percentage >= 80) {
+        printf("Grade B\n");
+    } else if (percentage >= 70) {
+        printf("Grade C\n");
+    } else if (percentage >= 60) {
+        printf("Grade D\n");
+    } else if (percentage >= 40) {
+        printf("Grade E\n");
+    } else {
+        printf("Grade F\n");
+    }
+    
+    return 0;
+}
