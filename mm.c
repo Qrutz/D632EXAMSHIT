@@ -1,80 +1,53 @@
+/******************************************************************************
+
+                            Online C Compiler.
+                Code, Compile, Run and Debug C program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
-#include <stdint.h>
 #include <string.h>
-
-void unpack(uint8_t packed, int bunnyPos, int JackPos)
-{
-    uint8_t whoMoves = (packed >> 7) & 0x01;
-    uint8_t direction = (packed >> 6) & 0x01;
-    uint8_t speedM = (packed >> 4) & 0x02;
-    uint8_t steps = (packed >> 1) & 0x0F;
-
-    if (whoMoves == 0)
-    {
-        // check steps
-
-        if (direction == 0)
-        {
-            JackPos = JackPos - (steps * speedM);
-        }
-        else
-        {
-            JackPos = JackPos + (steps * speedM);
-        }
-    }
-    else
-    {
-        if (direction == 0)
-        {
-            bunnyPos = bunnyPos - (steps * speedM);
-        }
-        else
-        {
-            bunnyPos = bunnyPos + (steps * speedM);
-        }
-    }
-
-    char mover[20];
-    char directionS[20];
-
-    strcpy(mover, whoMoves == 0 ? "Bunny" : "Jack");
-    strcpy(directionS, direction == 0 ? "backward" : "forward");
-
-    printf("%s Moves %d %s, bunny's position: %d, jack's position: %d \n", mover, steps, directionS, bunnyPos, JackPos);
-}
 
 int main()
 {
-    printf("Welcome to the game!\n");
-    srand(time(NULL));
-    int currentTurn = 0;
-    int bunnyPos = 0;
-    int jackPos = 0;
-
-    while (currentTurn < 10)
-    {
-
-        uint8_t random_byte = rand() % 256; // 256 is 2^8, the number of possible values in a byte
-        printf("Bunny draws 1 byte: 0x%02X\n", random_byte);
-        unpack(random_byte, bunnyPos, jackPos);
-        sleep(1);
-        random_byte = rand() % 256; // Generate a new random byte for Jack
-        printf("Jack draws 1 byte: 0x%02X\n", random_byte);
-        unpack(random_byte, bunnyPos, jackPos);
-
-        sleep(1);
-        ++currentTurn;
+  
+    char inp1[100];
+    char inp2[100];
+    
+    
+    printf("Input string 1: \n");
+    scanf("%s", inp1);
+    
+        
+    printf("Input string 2: \n");
+    scanf("%s", inp2);
+    
+   // Calculate the length of the new concatenated string
+    size_t length1 = strlen(inp1);
+    size_t length2 = strlen(inp2);
+    
+    // Allocate memory for the concatenated string (+1 for the null terminator)
+    char *newWord = malloc(length1 + length2 + 1);
+    
+    
+     // Manual concatenation using a loop
+    for (size_t i = 0; i < length1; i++) {
+        newWord[i] = inp1[i];
     }
-
-    if (bunnyPos > jackPos)
-    {
-        printf("bunny wins");
+    
+    for (size_t j = 0; j < length2; j++) {
+        newWord[length1 + j] = inp2[j];
     }
-    {
-        printf("jack wins")
-    }
+    
+    
+    
+       printf("Concatenated string: %s\n", newWord);
+       
+       
+        free(newWord);
 
+    
     return 0;
 }
