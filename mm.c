@@ -5,6 +5,50 @@
 Write your code in this editor and press "Run" button to compile and execute it.
 
 *******************************************************************************/
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+
+int contains_substring(const char *stringone, const char*substring) {
+    const char *p1, *p2, *p1_advance = stringone;
+    
+    while (*p1_advance) {
+        p1 = p1_advance;
+        p2 = substring;
+        
+        // check if they match
+        while  (*p1 == *p2) {
+            p1++;
+            p2++;
+        }
+        
+        
+        // if end of substring is hit we found it 
+        if (!*p2) {
+            return true;
+        }
+        
+        p1_advance++;
+        
+        
+    }
+    
+    return false;
+}
+
+int main() {
+
+    const char *str = "Hello, world!";
+    const char *sub = "abc";
+    
+    if (contains_substring(str, sub)) {
+        printf("Substring found.\n");
+    } else {
+        printf("Substring not found.\n");
+    }
+    
+    return 0;
+}
 
 #include <stdio.h>
 #include <stdlib.h>
